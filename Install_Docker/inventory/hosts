@@ -1,0 +1,7 @@
+[raspberrypi]
+192.168.0.159
+
+[raspberrypi:vars]
+ansible_user=pi 
+ansible_password=mikov12345
+ansible_become_password=mikov12345
