@@ -1,0 +1,35 @@
+---
+- hosts: raspberrypi
+  user: root
+  become: true
+
+  tasks: 
+    - name: Install httpd on debian based linux
+      apt:
+       name: apache2
+       state: latest
+
+    - name: List ufw app List
+      shell: "sudo ufw app list"
+      register: command_output
+    - debug:
+        msg: "The output is {{ command_output.stdout }}"
+    
+    - name: Allow ufw apache
+      shell: "sudo ufw allow 'Apache'"
+      register: output_apache
+    - debug:
+        msg: "The output is {{ output_apache.stdout }}"
+    
+
+    - name: Print the status of ufw
+      shell: "sudo ufw status"
+      register: output_apache
+    - debug:
+        msg: "The output is {{ output_apache.stdout }}"
+
+
+
+    
+
+    

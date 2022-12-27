@@ -1,0 +1,26 @@
+---
+- hosts: raspberrypi
+  become: true
+
+  tasks:
+   - name: update OS system
+     apt: 
+      update_cache: true
+      force_apt_get: true
+      cache_valid_time: 3600
+
+   - name: upgrade debian based linux
+     apt:
+      upgrade: dist
+      force_apt_get: true
+
+   - name: Install openssh on debian based linux
+     apt:
+       name: openssh-server
+       state: latest
+       
+   - name: Install python, pip, python3-pip
+     apt:
+      name: python3-pip, python, pip
+      state: latest
+      
